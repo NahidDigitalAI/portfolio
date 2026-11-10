@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nahid — CV | NahidDigitalAI</title>
+<meta name="description" content="Live CV of Nahid — Business Development & Social Media. NahidDigitalAI.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --blue:#0C9CC6; --blue-deep:#0A7FA3; --ink:#0B1A22; --ink-2:#132A36; --text:#0F1B22; --muted:#5B6B75; --line:#DDE6EC; --bg:#F5F8FA; --surface:#fff; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --text:#EAF3F7; --muted:#8FA3AE; --line:#1B2F3B; --bg:#081219; --surface:#0E1D26; } }
+  :root[data-theme="dark"] { --text:#EAF3F7; --muted:#8FA3AE; --line:#1B2F3B; --bg:#081219; --surface:#0E1D26; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Inter',system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; }
+  a { color:var(--blue); text-decoration:none; }
+  h1,h2,h3 { font-family:'Plus Jakarta Sans',Inter,sans-serif; letter-spacing:-.02em; }
+
+  .topbar { position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px 28px; background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+  .topbar a.back { font-size:14px; color:var(--muted); }
+  .topbar a.back:hover { color:var(--blue); }
+  .actions { display:flex; gap:10px; }
+  .btn { font:inherit; font-size:14px; font-weight:600; padding:10px 18px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--text); cursor:pointer; }
+  .btn.primary { background:linear-gradient(135deg,#0C9CC6,#0A7FA3); color:#fff; border-color:transparent; }
+
+  .page { max-width:920px; margin:40px auto 80px; background:var(--surface); border:1px solid var(--line); border-radius:22px; overflow:hidden; box-shadow:0 20px 50px -20px rgba(11,26,34,.18); }
+
+  .head { display:grid; grid-template-columns:200px 1fr; gap:34px; padding:48px; background:linear-gradient(160deg,var(--ink),var(--ink-2)); color:#EAF6FA; align-items:center; }
+  .photo { width:200px; aspect-ratio:4/5; border-radius:18px; overflow:hidden; border:2px solid rgba(255,255,255,.12); }
+  .photo img { width:100%; height:100%; object-fit:cover; object-position:center top; }
+  .head h1 { font-size:44px; font-weight:800; line-height:1.05; }
+  .head .role { color:#7fd8f0; font-weight:600; margin-top:8px; font-size:16px; }
+  .head .summary { color:#A9C3CE; margin-top:16px; font-size:15px; max-width:56ch; }
+  .contacts { display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:22px; font-size:14px; }
+  .contacts a, .contacts span { color:#EAF6FA; }
+  .contacts a:hover { color:#7fd8f0; }
+  .brand { display:flex; align-items:center; gap:10px; margin-top:26px; font-size:13px; color:#8FA9B5; }
+  .brand img { width:38px; height:38px; border-radius:9px; background:#fff; padding:2px; }
+
+  .body { padding:44px 48px; display:grid; gap:40px; }
+  .sec h2 { font-size:15px; font-weight:800; text-transform:uppercase; letter-spacing:.14em; color:var(--blue); margin-bottom:18px; display:flex; align-items:center; gap:12px; }
+  .sec h2::after { content:""; flex:1; height:1px; background:var(--line); }
+
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .stat { padding:18px; border:1px solid var(--line); border-radius:14px; text-align:center; }
+  .stat strong { display:block; font-family:'Plus Jakarta Sans',sans-serif; font-size:30px; font-weight:800; background:linear-gradient(135deg,#0C9CC6,#0A7FA3); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .stat span { font-size:12px; color:var(--muted); }
+
+  .job { padding:0 0 22px; margin-bottom:22px; border-bottom:1px solid var(--line); }
+  .job:last-child { border-bottom:0; margin-bottom:0; padding-bottom:0; }
+  .job-top { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  .job h3 { font-size:18px; font-weight:700; }
+  .job .co { color:var(--blue); font-weight:500; font-size:14px; }
+  .period { font-size:13px; color:var(--muted); white-space:nowrap; }
+  .job ul { margin-top:10px; padding-left:18px; color:var(--muted); font-size:14.5px; display:grid; gap:5px; }
+
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:36px; }
+  .list { display:grid; gap:12px; }
+  .list .it strong { display:block; font-weight:600; font-size:14.5px; }
+  .list .it span { font-size:13.5px; color:var(--muted); }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; }
+  .chips span { font-size:13px; padding:7px 13px; border:1px solid var(--line); border-radius:10px; }
+  .targets { display:grid; gap:12px; }
+  .target { padding:14px 16px; border:1px solid var(--line); border-radius:12px; }
+  .target small { color:var(--blue); font-weight:700; font-size:11px; letter-spacing:.1em; text-transform:uppercase; }
+  .target strong { display:block; font-size:15px; margin-top:4px; }
+  .target span { font-size:13px; color:var(--muted); }
+  .muted { color:var(--muted); font-size:14.5px; }
+
+  footer { text-align:center; font-size:13px; color:var(--muted); padding:20px 0 0; }
+
+  @media (max-width:760px) {
+    .head { grid-template-columns:1fr; text-align:center; justify-items:center; padding:36px 26px; }
+    .contacts { justify-content:center; }
+    .brand { justify-content:center; }
+    .body { padding:34px 26px; }
+    .stats { grid-template-columns:1fr 1fr; }
+    .two { grid-template-columns:1fr; }
+    .page { margin:0; border-radius:0; border-left:0; border-right:0; }
+  }
+  @media print {
+    .topbar { display:none; }
+    body { background:#fff; color:#000; }
+    .page { box-shadow:none; border:0; margin:0; max-width:100%; }
+    .head { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .job, .stat, .target { break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html" class="back">← Back to portfolio</a>
+  <div class="actions">
+    <button class="btn" id="themeBtn" aria-label="Toggle theme">◐</button>
+    <button class="btn primary" onclick="window.print()">Download PDF</button>
+  </div>
+</div>
+
+<main class="page">
+
+  <header class="head">
+    <div class="photo"><img src="assets/photo.jpg" alt="Nahid"></div>
+    <div>
+      <h1>Nahid</h1>
+      <div class="role">Business Development Executive · Social Media Manager</div>
+      <p class="summary">BBA (Management) graduate with hands-on deal-closing experience (800 deals), social media management, Facebook ad boosting, and website maintenance. Skilled in lead generation, prospect research, client consultation, and follow-up, with working knowledge of HubSpot CRM.</p>
+      <div class="contacts">
+        <a href="mailto:info.nahidhseikh@gmail.com">info.nahidhseikh@gmail.com</a>
+        <a href="https://wa.me/880157426267">+880 1574-26267</a>
+        <a href="https://www.linkedin.com/search/results/all/?keywords=nahiddigitalai" target="_blank" rel="noopener">@nahiddigitalai</a>
+        <a href="https://nahid-digital-ai.vercel.app" target="_blank" rel="noopener">nahid-digital-ai.vercel.app</a>
+        <span>Rajshahi, Bangladesh</span>
+      </div>
+      <div class="brand"><img src="assets/logo.png" alt="NahidDigitalAI"> NahidDigitalAI · Grow smarter with AI</div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <section class="sec">
+      <h2>Impact at a glance</h2>
+      <div class="stats">
+        <div class="stat"><strong>800+</strong><span>Deals closed</span></div>
+        <div class="stat"><strong>10K+</strong><span>People reached</span></div>
+        <div class="stat"><strong>300+</strong><span>Prospects built</span></div>
+        <div class="stat"><strong>7</strong><span>Staff hired</span></div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Career Objective</h2>
+      <p class="muted">Seeking a Business Development Executive role where I can close deals, grow brands online, and use AI to make sales and marketing faster and smarter.</p>
+    </section>
+
+    <section class="sec">
+      <h2>Professional Experience</h2>
+
+      <div class="job">
+        <div class="job-top"><div><h3>Marketing Intern</h3><div class="co">Global Height — International Education & Study Abroad</div></div><span class="period">Oct 2026 — Present</span></div>
+        <ul><li>Support marketing and business development, including client communication and follow-up.</li><li>Learn student counselling and education service processes through daily team work.</li></ul>
+      </div>
+
+      <div class="job">
+        <div class="job-top"><div><h3>Website & Social Media Manager</h3><div class="co">FWCA — Non-Profit Organization</div></div><span class="period">Ongoing</span></div>
+        <ul><li>Maintain the organization's website, keeping content and information up to date.</li><li>Manage social media pages and publish posts that share its work with the public.</li></ul>
+      </div>
+
+      <div class="job">
+        <div class="job-top"><div><h3>Student Counsellor / Business Development Support</h3><div class="co">Dream Abroad — Study Abroad Consultancy · Part-time</div></div><span class="period">Jun 2026 — Oct 2026</span></div>
+        <ul><li>Held initial consultations and gave prospective students clear information on overseas study.</li><li>Coordinated student file processing, documents, and follow-up communication.</li><li>Supported B2B activities for China and kept prospective clients informed.</li></ul>
+      </div>
+
+      <div class="job">
+        <div class="job-top"><div><h3>Marketing Executive</h3><div class="co">IHR'S Artistry</div></div><span class="period">Jan 2025 — Jun 2026</span></div>
+        <ul><li>Worked directly with clients and closed 800 deals.</li><li>Ran online and offline campaigns and promotional events.</li><li>Grew visibility through Facebook page promotion and post boosting, reaching 10,000+ people.</li><li>Recruited, interviewed, and hired 7 staff; managed office operations and billing.</li></ul>
+      </div>
+
+      <div class="job">
+        <div class="job-top"><div><h3>Freelance Digital Marketer</h3><div class="co">Fiverr, Freelancer.com & Local Clients</div></div><span class="period">2023 — Ongoing</span></div>
+        <ul><li>Boosted Facebook pages for local businesses, including Mokka Eye Hospital in Rajshahi and Chapai Nawabganj.</li><li>Ran CPA / affiliate campaigns on the AdFirm network until 2023; earned approx. $500+ from freelance projects.</li></ul>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Key Achievements</h2>
+      <ul class="muted" style="padding-left:18px;display:grid;gap:6px;">
+        <li>Closed 800 client deals at IHR'S Artistry.</li>
+        <li>Counselled and followed up with 30+ prospective students at Dream Abroad.</li>
+        <li>Built a prospect database of 300+ coaching centers across Rajshahi.</li>
+        <li>Reached 10,000+ people with Facebook campaigns, including boosted Mokka Eye Hospital pages in Rajshahi and Chapai Nawabganj.</li>
+        <li>Interviewed and hired 7 staff members; managed office operations and billing.</li>
+      </ul>
+    </section>
+
+    <div class="two">
+      <section class="sec">
+        <h2>Core Skills</h2>
+        <div class="chips">
+          <span>Lead Generation</span><span>Prospect Research</span><span>Outreach</span><span>Client Consultation</span><span>Sales Follow-up</span><span>Closing</span>
+          <span>Facebook Ads & Boosting</span><span>Facebook Page Management</span><span>Content Posting</span><span>Website Management</span><span>Google Business Profile</span><span>CPA / Affiliate</span>
+        </div>
+      </section>
+      <section class="sec">
+        <h2>Tools</h2>
+        <div class="chips">
+          <span>HubSpot CRM</span><span>Meta Business Suite</span><span>Canva</span><span>Microsoft Word</span><span>Excel</span><span>PowerPoint</span><span>Google Docs & Sheets</span><span>AI Tools</span>
+        </div>
+      </section>
+    </div>
+
+    <section class="sec">
+      <h2>Certifications & Learning</h2>
+      <div class="two">
+        <div class="list">
+          <div class="it"><strong>HubSpot Academy</strong><span>Inbound Sales · Sales Hub Software · Revenue Operations · Email Marketing</span></div>
+          <div class="it"><strong>Google</strong><span>Google Ads (Search, Display, Video) · Google Analytics · Google Business Profile</span></div>
+          <div class="it"><strong>Meta Blueprint</strong><span>Digital Marketing Associate · Meta Ads Campaign Management · Meta Business Suite</span></div>
+        </div>
+        <div class="list">
+          <div class="it"><strong>Digital Marketing</strong><span>Digital Security Essentials · Muktopaath</span></div>
+          <div class="it"><strong>MS Excel, Word & Content Creation</strong><span>10 Minute School</span></div>
+          <div class="it"><strong>Public Speaking</strong><span>Bohubrihi</span></div>
+          <div class="it"><strong>Freelancing</strong><span>E-Learning Earning Ltd.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Education</h2>
+      <div class="list">
+        <div class="it"><strong>BBA (Management)</strong><span>National University, Bangladesh — Baneswar Government College</span></div>
+        <div class="it"><strong>Higher Secondary Certificate (HSC)</strong><span>Durgapur College</span></div>
+        <div class="it"><strong>Secondary School Certificate (SSC)</strong><span>Bakhtiarpur High School</span></div>
+      </div>
+    </section>
+
+    <div class="two">
+      <section class="sec">
+        <h2>Job Targets</h2>
+        <div class="targets">
+          <div class="target"><small>First choice</small><strong>Business Development Executive</strong><span>B2B client acquisition · Lead generation · CRM · Negotiation & deal closing</span></div>
+          <div class="target"><small>Second choice</small><strong>SaaS Sales Development Representative</strong><span>International client outreach · Cold email · Prospecting · Sales qualification</span></div>
+          <div class="target"><small>Third choice</small><strong>Inside Sales / Client Success Executive</strong><span>Office-based or hybrid roles, with client visits when needed</span></div>
+        </div>
+      </section>
+      <section class="sec">
+        <h2>Languages & Interests</h2>
+        <div class="list">
+          <div class="it"><strong>Languages</strong><span>Bengali (native) · English (B2, Upper Intermediate)</span></div>
+          <div class="it"><strong>Interests</strong><span>Reading · Music · Travel · Football / Cricket · Technology & AI</span></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="sec">
+      <h2>Reference</h2>
+      <p class="muted">Moniruzzaman Moni Sir — Department Head of Management, Baneswar Government College. Contact details available upon request.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer>© <span id="year"></span> Nahid · NahidDigitalAI · Grow smarter with AI</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const root = document.documentElement;
+  document.getElementById('themeBtn').addEventListener('click', () => {
+    const cur = root.getAttribute('data-theme');
+    const dark = cur === 'dark' || (!cur && matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'light' : 'dark');
+  });
+</script>
+</body>
+</html>

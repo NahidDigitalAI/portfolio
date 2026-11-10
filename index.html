@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Nahid — NahidDigitalAI. Business development, social media, Facebook advertising and AI-driven digital growth. Grow smarter with AI.">
+  <meta name="theme-color" content="#0b1a22">
+  <title>Nahid — NahidDigitalAI | Grow Smarter with AI</title>
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Brand tokens (from logo) ===== */
+    :root {
+      --blue: #0C9CC6;
+      --blue-deep: #0A7FA3;
+      --blue-glow: #3CC3E8;
+      --charcoal: #2E3136;
+      --ink: #0B1A22;
+      --ink-2: #132A36;
+      --bg: #F5F8FA;
+      --surface: #FFFFFF;
+      --text: #0F1B22;
+      --muted: #5B6B75;
+      --line: #DDE6EC;
+      --radius: 18px;
+      --max: 1160px;
+      --grad: linear-gradient(135deg, #0C9CC6 0%, #0A7FA3 60%, #2E3136 130%);
+      --shadow: 0 1px 2px rgba(11,26,34,.04), 0 14px 34px -14px rgba(11,26,34,.16);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #081219; --surface: #0E1D26; --text: #EAF3F7;
+        --muted: #8FA3AE; --line: #1B2F3B; --shadow: 0 14px 40px -14px rgba(0,0,0,.6);
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #081219; --surface: #0E1D26; --text: #EAF3F7;
+      --muted: #8FA3AE; --line: #1B2F3B; --shadow: 0 14px 40px -14px rgba(0,0,0,.6);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+    h1, h2, h3 { font-family: 'Plus Jakarta Sans', Inter, sans-serif; letter-spacing: -0.02em; }
+    .muted { color: var(--muted); }
+    .gradient-text {
+      background: linear-gradient(120deg, var(--blue-glow), var(--blue) 45%, #7fd8f0);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    /* ===== Nav ===== */
+    nav {
+      position: sticky; top: 0; z-index: 60;
+      background: color-mix(in srgb, var(--bg) 84%, transparent);
+      backdrop-filter: saturate(180%) blur(16px);
+      -webkit-backdrop-filter: saturate(180%) blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; position: relative; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 11px; overflow: hidden;
+      background: #fff; position: relative; flex-shrink: 0;
+      box-shadow: 0 0 0 1px var(--line);
+    }
+    .brand-mark img { position: absolute; width: 250%; max-width: none; left: -75%; top: -90%; }
+    .brand-text { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
+    .brand-text span { color: var(--blue); }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 500; color: var(--muted); }
+    .nav-links a { transition: color .2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .icon-btn {
+      background: var(--surface); border: 1px solid var(--line); color: var(--text);
+      width: 40px; height: 40px; border-radius: 12px; cursor: pointer; font-size: 15px;
+      display: grid; place-items: center; transition: border-color .2s, color .2s;
+    }
+    .icon-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .menu-btn { display: none; }
+
+    /* ===== Buttons ===== */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 24px; border-radius: 999px; font-size: 14px; font-weight: 600;
+      border: 1px solid transparent; transition: transform .25s ease, box-shadow .25s ease, border-color .25s, color .25s;
+      cursor: pointer; font-family: inherit;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--grad); color: #fff; box-shadow: 0 10px 30px -10px rgba(12,156,198,.6); }
+    .btn-primary:hover { box-shadow: 0 16px 36px -10px rgba(12,156,198,.7); }
+    .btn-ghost { border-color: var(--line); color: var(--text); background: var(--surface); }
+    .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* ===== Hero ===== */
+    .hero {
+      position: relative; overflow: hidden; padding: 120px 0 0;
+      background:
+        radial-gradient(1000px 500px at 85% -10%, rgba(12,156,198,.28), transparent 60%),
+        radial-gradient(800px 500px at -10% 110%, rgba(46,49,54,.55), transparent 60%),
+        linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+      color: #EAF6FA;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 75%);
+      mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 75%);
+    }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--blue-glow); padding: 8px 16px; border-radius: 999px;
+      background: rgba(12,156,198,.12); border: 1px solid rgba(12,156,198,.3);
+    }
+    .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--blue-glow); animation: pulse 2s infinite; }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(60,195,232,.6); }
+      70% { box-shadow: 0 0 0 10px rgba(60,195,232,0); }
+      100% { box-shadow: 0 0 0 0 rgba(60,195,232,0); }
+    }
+    .hero h1 { font-size: clamp(40px, 6vw, 70px); font-weight: 800; line-height: 1.05; margin: 26px 0 24px; color: #fff; }
+    .hero .lead { font-size: 18px; color: #A9C3CE; max-width: 54ch; }
+    .cta-row { margin-top: 40px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero .btn-ghost { background: rgba(255,255,255,.04); color: #EAF6FA; border-color: rgba(255,255,255,.14); }
+    .hero .btn-ghost:hover { border-color: var(--blue-glow); color: var(--blue-glow); }
+
+    /* Hero logo card: crops the logo's whitespace */
+    .logo-card {
+      position: relative; aspect-ratio: 1/1; border-radius: 28px; overflow: hidden;
+      background: #fff; border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 40px 80px -30px rgba(0,0,0,.6);
+    }
+    .logo-card img { position: absolute; width: 175%; max-width: none; left: -37.5%; top: -37.5%; }
+    .float-chip {
+      position: absolute; z-index: 2; padding: 12px 16px; border-radius: 14px;
+      background: rgba(14,29,38,.88); border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px); font-size: 13px; color: #EAF6FA;
+      box-shadow: 0 16px 40px -12px rgba(0,0,0,.5);
+    }
+    .float-chip strong { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; color: var(--blue-glow); }
+    .chip-a { left: -18px; bottom: 56px; }
+    .chip-b { right: -14px; top: 36px; }
+
+    .stats {
+      margin-top: 90px; display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .stat { padding: 40px 24px 48px; border-right: 1px solid rgba(255,255,255,.08); }
+    .stat:last-child { border-right: 0; }
+    .stat strong {
+      display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
+      font-size: 44px; line-height: 1; color: #fff; letter-spacing: -0.03em;
+    }
+    .stat span { font-size: 13px; color: #8FA9B5; }
+
+    /* ===== Sections ===== */
+    section { padding: 120px 0; }
+    .alt { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .section-head { margin-bottom: 64px; max-width: 680px; }
+    .kicker { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; }
+    .section-head h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 800; line-height: 1.1; }
+    .section-head p { margin-top: 16px; color: var(--muted); font-size: 17px; }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .about-grid .body p { color: var(--muted); font-size: 16.5px; }
+    .about-grid .body p + p { margin-top: 18px; }
+    .highlights { display: grid; gap: 14px; margin-top: 30px; }
+    .hl {
+      display: flex; gap: 16px; align-items: flex-start; padding: 20px 22px;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+    }
+    .hl .ico {
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(12,156,198,.12); color: var(--blue); display: grid; place-items: center; font-size: 18px;
+    }
+    .hl h4 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+    .hl p { font-size: 14px; color: var(--muted); }
+    .info-table { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+    .info-row { display: grid; grid-template-columns: 150px 1fr; padding: 18px 26px; border-bottom: 1px solid var(--line); font-size: 15px; }
+    .info-row:last-child { border-bottom: 0; }
+    .info-row > span:first-child { color: var(--muted); }
+    .info-row a { color: var(--blue); font-weight: 500; }
+    .info-row a:hover { text-decoration: underline; }
+
+    /* Services */
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .service {
+      position: relative; padding: 36px; border-radius: var(--radius); overflow: hidden;
+      background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow);
+      transition: transform .35s ease, border-color .35s ease;
+    }
+    .service::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform .45s ease;
+    }
+    .service:hover { transform: translateY(-6px); border-color: rgba(12,156,198,.4); }
+    .service:hover::before { transform: scaleX(1); }
+    .service .n { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700; color: var(--blue); letter-spacing: .1em; }
+    .service h3 { font-size: 22px; font-weight: 700; margin: 14px 0 10px; }
+    .service > p { color: var(--muted); font-size: 15px; }
+    .service ul { list-style: none; margin-top: 20px; display: grid; gap: 9px; }
+    .service li { font-size: 14px; display: flex; gap: 10px; align-items: center; }
+    .service li::before { content: "✓"; color: var(--blue); font-weight: 700; }
+
+    /* Impact */
+    .impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .metric { padding: 36px; border-radius: var(--radius); background: var(--bg); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .metric .val {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 56px; line-height: 1;
+      letter-spacing: -0.035em; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .metric h3 { font-size: 16px; font-weight: 600; margin: 16px 0 6px; }
+    .metric p { color: var(--muted); font-size: 14px; }
+
+    /* Profile photo */
+    .profile { display: grid; grid-template-columns: 200px 1fr; gap: 26px; align-items: center; margin-bottom: 26px; }
+    .profile-photo {
+      width: 200px; aspect-ratio: 4/5; border-radius: 22px; overflow: hidden;
+      border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--bg);
+    }
+    .profile-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .profile-meta h3 { font-size: 24px; font-weight: 800; }
+    .profile-meta p { color: var(--muted); font-size: 15px; margin-top: 4px; }
+    .profile-meta .tagline { color: var(--blue); font-weight: 600; margin-top: 10px; }
+    @media (max-width: 600px) { .profile { grid-template-columns: 1fr; } .profile-photo { width: 100%; max-width: 260px; } }
+
+    /* Experience timeline */
+    .timeline { position: relative; padding-left: 34px; }
+    .timeline::before {
+      content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px;
+      background: linear-gradient(var(--blue), var(--line));
+    }
+    .job { position: relative; padding: 0 0 40px; }
+    .job::before {
+      content: ""; position: absolute; left: -34px; top: 30px; width: 16px; height: 16px; border-radius: 50%;
+      background: var(--bg); border: 3px solid var(--blue); box-sizing: border-box;
+    }
+    .job.current::before { background: var(--blue); box-shadow: 0 0 0 6px rgba(12,156,198,.18); }
+    .job-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 34px; box-shadow: var(--shadow); }
+    .job-top { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: flex-start; }
+    .job h3 { font-size: 21px; font-weight: 700; }
+    .job .company { color: var(--blue); font-weight: 500; font-size: 15px; margin-top: 2px; }
+    .period {
+      font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 999px;
+      background: var(--bg); border: 1px solid var(--line); color: var(--muted); white-space: nowrap;
+    }
+    .job.current .period { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .job ul { list-style: none; margin-top: 18px; display: grid; gap: 10px; }
+    .job li { position: relative; padding-left: 20px; color: var(--muted); font-size: 15px; }
+    .job li::before { content: ""; position: absolute; left: 0; top: 11px; width: 8px; height: 2px; background: var(--blue); }
+
+    /* Skills */
+    .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .skill-group { padding: 34px; border-radius: var(--radius); background: var(--bg); border: 1px solid var(--line); }
+    .skill-group h3 { font-size: 16px; font-weight: 700; margin-bottom: 22px; display: flex; align-items: center; gap: 10px; }
+    .skill-group h3::before { content: ""; width: 10px; height: 10px; border-radius: 3px; background: var(--grad); }
+    .bars { display: grid; gap: 18px; }
+    .bar-head { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px; }
+    .bar-head span:last-child { color: var(--muted); }
+    .bar { height: 6px; border-radius: 99px; background: var(--line); overflow: hidden; }
+    .bar i { display: block; height: 100%; width: 0; border-radius: 99px; background: var(--grad); transition: width 1.4s cubic-bezier(.2,.7,.2,1); }
+    .tool-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tool-chips span { font-size: 14px; padding: 9px 16px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); font-weight: 500; }
+
+    /* Featured project */
+    .project {
+      display: grid; grid-template-columns: 1.1fr 1fr; overflow: hidden;
+      border-radius: 24px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow);
+    }
+    .project-info { padding: 52px; }
+    .project-info .tag {
+      display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--blue); background: rgba(12,156,198,.1); padding: 6px 12px; border-radius: 8px; margin-bottom: 18px;
+    }
+    .project-info h3 { font-size: 34px; font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+    .project-info > p { color: var(--muted); font-size: 16px; margin-bottom: 26px; }
+    .project-info ul { list-style: none; display: grid; gap: 8px; margin-bottom: 32px; }
+    .project-info li { font-size: 15px; display: flex; gap: 10px; }
+    .project-info li::before { content: "→"; color: var(--blue); font-weight: 700; }
+    .project-visual {
+      background: linear-gradient(160deg, var(--ink), var(--ink-2));
+      position: relative; display: grid; place-items: center; min-height: 340px; overflow: hidden;
+    }
+    .project-visual::after {
+      content: ""; position: absolute; width: 380px; height: 380px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(12,156,198,.45), transparent 65%); filter: blur(20px);
+    }
+    .logo-tile {
+      position: relative; z-index: 1; width: 240px; height: 240px; border-radius: 28px; overflow: hidden;
+      background: #fff; box-shadow: 0 30px 60px -20px rgba(0,0,0,.6);
+    }
+    .logo-tile img { position: absolute; width: 175%; max-width: none; left: -37.5%; top: -37.5%; }
+
+    /* Education */
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .panel { padding: 36px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .panel h3 { font-size: 18px; font-weight: 700; margin-bottom: 14px; }
+    .panel .item { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .panel .item:last-child { border-bottom: 0; padding-bottom: 0; }
+    .panel .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--blue); margin-top: 8px; flex-shrink: 0; box-shadow: 0 0 0 4px rgba(12,156,198,.15); }
+    .panel strong { display: block; font-weight: 600; font-size: 15px; }
+    .panel .item span:not(.dot) { font-size: 14px; color: var(--muted); }
+
+    /* Contact */
+    .contact-wrap {
+      position: relative; overflow: hidden; border-radius: 28px; padding: 80px 60px;
+      background: linear-gradient(135deg, var(--ink) 0%, var(--ink-2) 60%, #1b3d4c 100%);
+      color: #EAF6FA; display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center;
+    }
+    .contact-wrap::before {
+      content: ""; position: absolute; width: 520px; height: 520px; right: -160px; top: -200px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(12,156,198,.45), transparent 65%);
+    }
+    .contact-wrap .kicker { color: var(--blue-glow); position: relative; }
+    .contact-wrap h2 { font-size: clamp(34px, 4.5vw, 54px); font-weight: 800; line-height: 1.08; position: relative; }
+    .contact-wrap > div > p { color: #A9C3CE; margin-top: 16px; position: relative; font-size: 17px; }
+    .contact-actions { position: relative; display: grid; gap: 12px; }
+    .contact-actions .btn-ghost { background: rgba(255,255,255,.05); color: #EAF6FA; border-color: rgba(255,255,255,.15); }
+    .contact-actions .btn-ghost:hover { border-color: var(--blue-glow); color: var(--blue-glow); }
+
+    footer { padding: 36px 0; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+    footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+
+    /* Count-up numbers */
+    .count { font-variant-numeric: tabular-nums; }
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1000px) {
+      .hero-grid, .about-grid, .project, .contact-wrap, .edu-grid { grid-template-columns: 1fr; }
+      .logo-card { max-width: 380px; margin: 0 auto; width: 100%; }
+      .services, .impact { grid-template-columns: 1fr 1fr; }
+      .project-info { padding: 40px; }
+      .contact-wrap { padding: 56px 40px; }
+    }
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none; position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; gap: 0;
+        padding: 6px 28px 18px; background: var(--bg); border-bottom: 1px solid var(--line);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 14px 0; border-bottom: 1px solid var(--line); }
+      .menu-btn { display: grid; }
+      .skills { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .stat:nth-child(2) { border-right: 0; }
+      .stat:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,.08); }
+      .chip-a, .chip-b { display: none; }
+    }
+    @media (max-width: 600px) {
+      .services, .impact { grid-template-columns: 1fr; }
+      .info-row { grid-template-columns: 1fr; gap: 4px; }
+      .hero { padding-top: 90px; }
+      section { padding: 90px 0; }
+      .timeline { padding-left: 26px; }
+      .job::before { left: -26px; }
+      .job-card, .panel { padding: 26px; }
+      .stat { padding: 28px 18px; }
+      .contact-wrap { padding: 44px 26px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a href="#top" class="brand" aria-label="NahidDigitalAI home">
+        <div class="brand-mark"><img src="assets/logo.png" alt="NahidDigitalAI logo"></div>
+        <div class="brand-text">Nahid<span>Digital</span>AI</div>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#impact">Impact</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Project</a>
+        <a href="#learning">Certificates</a>
+        <a href="#personal">Interests</a>
+        <a href="cv.html">CV</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-right">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">◐</button>
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="pulse"></span> Available for opportunities</span>
+        <h1>Closing deals and growing brands with <span class="gradient-text">AI-driven</span> digital.</h1>
+        <p class="lead">Business Development Executive and Social Media Manager. I help businesses generate leads, close sales, and grow online through Facebook advertising, CRM-driven follow-up, and smart digital strategy.</p>
+        <div class="cta-row">
+          <a href="#contact" class="btn btn-primary">Work with me →</a>
+          <a href="cv.html" class="btn btn-ghost">View live CV</a>
+          <a href="#experience" class="btn btn-ghost">View experience</a>
+        </div>
+      </div>
+      <div class="logo-card reveal">
+        <img src="assets/logo.png" alt="NahidDigitalAI — Grow Smarter with AI">
+        <div class="float-chip chip-a"><strong><span class="count" data-to="800" data-prefix="" data-suffix="+">800+</span></strong>Deals closed</div>
+        <div class="float-chip chip-b"><strong><span class="count" data-to="10" data-prefix="" data-suffix="K+">10K+</span></strong>People reached</div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat"><strong><span class="count" data-to="800" data-prefix="" data-suffix="+">800+</span></strong><span>Deals closed</span></div>
+        <div class="stat"><strong><span class="count" data-to="10" data-prefix="" data-suffix="K+">10K+</span></strong><span>People reached</span></div>
+        <div class="stat"><strong><span class="count" data-to="300" data-prefix="" data-suffix="+">300+</span></strong><span>Prospects researched</span></div>
+        <div class="stat"><strong><span class="count" data-to="7" data-prefix="" data-suffix="">7</span></strong><span>Staff hired</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">01 — About</span>
+        <h2>Sales instinct meets digital execution.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="body reveal">
+          <p>I'm a BBA (Management) graduate from National University, Bangladesh, with practical experience across study-abroad consultancy, healthcare promotion, non-profit communications, and direct sales.</p>
+          <p>I've closed 800 deals while working directly with clients, managed Facebook pages and paid boosts that reached more than 10,000 people, and built prospect databases and CRM pipelines from scratch.</p>
+          <p>My goal is simple: help businesses grow smarter, using AI tools to work faster and reach the right people.</p>
+          <div class="highlights">
+            <div class="hl"><div class="ico">◎</div><div><h4>Results-focused</h4><p>Measured by deals closed, leads generated, and audiences reached.</p></div></div>
+            <div class="hl"><div class="ico">⚡</div><div><h4>AI-enabled workflow</h4><p>Using automation and AI to research, write, and manage faster.</p></div></div>
+            <div class="hl"><div class="ico">◈</div><div><h4>Client-first approach</h4><p>Consultation, follow-up, and clear communication at every step.</p></div></div>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="profile">
+            <div class="profile-photo"><img src="assets/photo.jpg" alt="Nahid, Business Development & Social Media"></div>
+            <div class="profile-meta">
+              <h3>Nahid</h3>
+              <p>Business Development Executive · Social Media Manager</p>
+              <p class="tagline">Grow smarter with AI</p>
+            </div>
+          </div>
+          <div class="info-table">
+            <div class="info-row"><span>Name</span><span>Nahid</span></div>
+            <div class="info-row"><span>Brand</span><span>NahidDigitalAI</span></div>
+            <div class="info-row"><span>Tagline</span><span>Grow smarter with AI</span></div>
+            <div class="info-row"><span>Role</span><span>Business Development & Social Media</span></div>
+            <div class="info-row"><span>Education</span><span>BBA (Management), National University</span></div>
+            <div class="info-row"><span>Languages</span><span>Bengali (native), English (B2)</span></div>
+            <div class="info-row"><span>Location</span><span>Rajshahi, Bangladesh</span></div>
+            <div class="info-row"><span>Availability</span><span>Open to full-time & freelance</span></div>
+            <div class="info-row"><span>Website</span><a href="https://nahid-digital-ai.vercel.app" target="_blank" rel="noopener">nahid-digital-ai.vercel.app</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">02 — Services</span>
+        <h2>How I can help your business grow.</h2>
+        <p>From first contact to closed deal, and from a single post to a full campaign.</p>
+      </div>
+      <div class="services">
+        <article class="service reveal">
+          <div class="n">01</div>
+          <h3>Business Development</h3>
+          <p>Build a pipeline that converts: research, outreach, and close.</p>
+          <ul>
+            <li>Lead generation</li>
+            <li>Prospect research & databases</li>
+            <li>Client consultation</li>
+            <li>Sales follow-up & closing</li>
+          </ul>
+        </article>
+        <article class="service reveal">
+          <div class="n">02</div>
+          <h3>Social Media Management</h3>
+          <p>A consistent, professional presence that keeps your audience engaged.</p>
+          <ul>
+            <li>Facebook page management</li>
+            <li>Content planning & posting</li>
+            <li>Google Business Profile</li>
+            <li>Website content updates</li>
+          </ul>
+        </article>
+        <article class="service reveal">
+          <div class="n">03</div>
+          <h3>Paid Ads & Growth</h3>
+          <p>Reach more of the right people without wasting budget.</p>
+          <ul>
+            <li>Facebook ads & post boosting</li>
+            <li>CPA / affiliate campaigns</li>
+            <li>Local SEO basics</li>
+            <li>AI-assisted content & automation</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact" class="alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">03 — Impact</span>
+        <h2>Results that speak for themselves.</h2>
+      </div>
+      <div class="impact">
+        <div class="metric reveal"><div class="val"><span class="count" data-to="800" data-prefix="" data-suffix="">800</span></div><h3>Deals closed</h3><p>Direct client work at IHR'S Artistry, from consultation through to close.</p></div>
+        <div class="metric reveal"><div class="val"><span class="count" data-to="10" data-prefix="" data-suffix="K+">10K+</span></div><h3>People reached</h3><p>Facebook campaigns and post boosting for healthcare and local businesses.</p></div>
+        <div class="metric reveal"><div class="val"><span class="count" data-to="300" data-prefix="" data-suffix="+">300+</span></div><h3>Prospects built</h3><p>A coaching-center database across Rajshahi for outreach and lead generation.</p></div>
+        <div class="metric reveal"><div class="val"><span class="count" data-to="30" data-prefix="" data-suffix="+">30+</span></div><h3>Students counselled</h3><p>Consultations and follow-ups with prospective students at Dream Abroad.</p></div>
+        <div class="metric reveal"><div class="val"><span class="count" data-to="7" data-prefix="" data-suffix="">7</span></div><h3>Staff hired</h3><p>End-to-end recruitment, plus office operations and billing management.</p></div>
+        <div class="metric reveal"><div class="val"><span class="count" data-to="500" data-prefix="$" data-suffix="+">$500+</span></div><h3>Freelance earnings</h3><p>Earned from marketing projects on Fiverr, Freelancer.com, and with local clients.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">04 — Experience</span>
+        <h2>Where I've worked.</h2>
+      </div>
+      <div class="timeline">
+        <div class="job current reveal">
+          <div class="job-card">
+            <div class="job-top">
+              <div><h3>Marketing Intern</h3><div class="company">Global Height — International Education & Study Abroad</div></div>
+              <span class="period">Oct 2026 — Present</span>
+            </div>
+            <ul>
+              <li>Support marketing and business development, including client communication and follow-up.</li>
+              <li>Learn student counselling and education service processes through daily team work.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job reveal">
+          <div class="job-card">
+            <div class="job-top">
+              <div><h3>Website & Social Media Manager</h3><div class="company">FWCA — Non-Profit Organization</div></div>
+              <span class="period">Ongoing</span>
+            </div>
+            <ul>
+              <li>Maintain the organization's website, keeping content and information up to date.</li>
+              <li>Manage social media pages and publish posts that share its work with the public.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job reveal">
+          <div class="job-card">
+            <div class="job-top">
+              <div><h3>Student Counsellor / Business Development Support</h3><div class="company">Dream Abroad — Study Abroad Consultancy · Part-time</div></div>
+              <span class="period">Jun 2026 — Oct 2026</span>
+            </div>
+            <ul>
+              <li>Held initial consultations and gave prospective students clear information on overseas study.</li>
+              <li>Coordinated student file processing, documents, and follow-up communication.</li>
+              <li>Supported B2B activities for China and kept prospective clients informed.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job reveal">
+          <div class="job-card">
+            <div class="job-top">
+              <div><h3>Marketing Executive</h3><div class="company">IHR'S Artistry</div></div>
+              <span class="period">Jan 2025 — Jun 2026</span>
+            </div>
+            <ul>
+              <li>Worked directly with clients and closed 800 deals.</li>
+              <li>Ran online and offline campaigns and promotional events.</li>
+              <li>Grew visibility through Facebook page promotion and post boosting, reaching 10,000+ people.</li>
+              <li>Recruited, interviewed, and hired 7 staff; managed office operations and billing.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job reveal">
+          <div class="job-card">
+            <div class="job-top">
+              <div><h3>Freelance Digital Marketer</h3><div class="company">Fiverr, Freelancer.com & Local Clients</div></div>
+              <span class="period">2023 — Ongoing</span>
+            </div>
+            <ul>
+              <li>Boosted Facebook pages for local businesses, including Mokka Eye Hospital in Rajshahi and Chapai Nawabganj.</li>
+              <li>Ran CPA / affiliate campaigns on the AdFirm network until 2023.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">05 — Skills</span>
+        <h2>Capabilities & tools.</h2>
+      </div>
+      <div class="skills">
+        <div class="skill-group reveal">
+          <h3>Core Strengths</h3>
+          <div class="bars">
+            <div><div class="bar-head"><span>Business Development</span><span>Expert</span></div><div class="bar"><i data-w="92"></i></div></div>
+            <div><div class="bar-head"><span>Client Consultation</span><span>Expert</span></div><div class="bar"><i data-w="90"></i></div></div>
+            <div><div class="bar-head"><span>Facebook Ads & Boosting</span><span>Advanced</span></div><div class="bar"><i data-w="85"></i></div></div>
+            <div><div class="bar-head"><span>Social Media Management</span><span>Advanced</span></div><div class="bar"><i data-w="84"></i></div></div>
+            <div><div class="bar-head"><span>CRM & Pipeline</span><span>Advanced</span></div><div class="bar"><i data-w="80"></i></div></div>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Tools & Platforms</h3>
+          <div class="tool-chips">
+            <span>HubSpot CRM</span><span>Meta Business Suite</span><span>Facebook Ads</span><span>Google Business Profile</span>
+            <span>Canva</span><span>Excel</span><span>PowerPoint</span><span>Google Docs & Sheets</span>
+            <span>Microsoft Word</span><span>CPA / Affiliate</span><span>Website Management</span><span>AI Tools</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">06 — Featured Project</span>
+        <h2>NahidDigitalAI.</h2>
+      </div>
+      <article class="project reveal">
+        <div class="project-info">
+          <span class="tag">Digital Marketing & AI</span>
+          <h3>Grow smarter with AI.</h3>
+          <p>My personal brand and portfolio platform, covering website content, local SEO, Google Business Profile, Facebook advertising concepts, and Python automation learning.</p>
+          <ul>
+            <li>Website content & local SEO</li>
+            <li>Google Business Profile optimization</li>
+            <li>Facebook advertising strategy</li>
+            <li>Python automation & AI experiments</li>
+          </ul>
+          <a href="https://nahid-digital-ai.vercel.app" target="_blank" rel="noopener" class="btn btn-primary">Visit nahid-digital-ai.vercel.app →</a>
+        </div>
+        <div class="project-visual">
+          <div class="logo-tile"><img src="assets/logo.png" alt="NahidDigitalAI logo"></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="education" class="alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">07 — Education & Training</span>
+        <h2>Learning, continuously.</h2>
+      </div>
+      <div class="edu-grid">
+        <div class="panel reveal">
+          <h3>Education</h3>
+          <div class="item"><span class="dot"></span><div><strong>BBA (Management)</strong><span>National University, Bangladesh — Baneswar Government College</span></div></div>
+          <div class="item"><span class="dot"></span><div><strong>Higher Secondary Certificate (HSC)</strong><span>Durgapur College</span></div></div>
+          <div class="item"><span class="dot"></span><div><strong>Secondary School Certificate (SSC)</strong><span>Bakhtiarpur High School</span></div></div>
+        </div>
+        <div class="panel reveal">
+          <h3>Training & Certifications</h3>
+          <div class="item"><span class="dot"></span><div><strong>Digital Marketing</strong><span>Digital Security Essentials · Muktopaath</span></div></div>
+          <div class="item"><span class="dot"></span><div><strong>MS Excel, Word & Content Creation</strong><span>10 Minute School</span></div></div>
+          <div class="item"><span class="dot"></span><div><strong>Public Speaking</strong><span>Bohubrihi</span></div></div>
+          <div class="item"><span class="dot"></span><div><strong>Freelancing</strong><span>E-Learning Earning Ltd.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="learning" class="alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">08 — Learning & Certifications</span>
+        <h2>Certifications & learning path.</h2>
+        <p>Free courses from HubSpot, Google, and Meta, focused on sales, ads, and digital growth.</p>
+      </div>
+      <div class="edu-grid">
+        <div class="panel reveal">
+          <h3>HubSpot Academy</h3>
+          <div class="item"><span class="dot"></span><div><strong>Inbound Sales Certification</strong><span>Priority: High</span></div></div>
+          <div class="item"><span class="dot"></span><div><strong>HubSpot Sales Hub Software</strong><span>CRM & pipeline management</span></div></div>
+          <div class="item"><span class="dot"></span><div><strong>Revenue Operations Certification</strong><span>Sales & marketing process</span></div></div>
+          <div class="item"><span class="dot"></span><div><strong>Email Marketing</strong><span>Email campaigns & automation</span></div></div>
+        </div>
+        <div class="panel reveal">
+          <h3>Google & Meta</h3>
+          <div class="item"><span class="dot"></span><div><strong>Google Ads — Search, Display, Video</strong><span>Search, display, and YouTube advertising</span></div></div>
+          <div class="item"><span class="dot"></span><div><strong>Google Analytics</strong><span>Website traffic & performance</span></div></div>
+          <div class="item"><span class="dot"></span><div><strong>Google Business Profile</strong><span>Local search presence</span></div></div>
+          <div class="item"><span class="dot"></span><div><strong>Meta Digital Marketing Associate</strong><span>Priority: Highest · Facebook & Instagram</span></div></div>
+          <div class="item"><span class="dot"></span><div><strong>Meta Ads Campaign Management</strong><span>Campaign setup & optimization</span></div></div>
+          <div class="item"><span class="dot"></span><div><strong>Meta Business Suite</strong><span>Page & ad management</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="personal">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">08 — Beyond Work</span>
+        <h2>What I'm looking for & what I enjoy.</h2>
+      </div>
+      <div class="skills">
+        <div class="skill-group reveal">
+          <h3>Career Interests</h3>
+          <div class="tool-chips">
+            <span>Business Development</span><span>Social Media Manager</span><span>Digital Marketing</span><span>Freelance / Remote work</span>
+          </div>
+          <p class="muted" style="margin-top:20px;font-size:15px;">Open to full-time roles and freelance projects where I can combine sales, marketing, and AI-driven growth.</p>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Hobbies & Interests</h3>
+          <div class="tool-chips">
+            <span>Reading</span><span>Music</span><span>Travel</span><span>Football / Cricket</span><span>Technology & AI</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="margin-top:22px;">
+        <div class="skill-group">
+          <h3>My Goal</h3>
+          <p style="font-size:17px;color:var(--muted);">Find a Business Development Executive or Social Media Manager role where I can close deals, grow brands online, and keep learning how AI can make growth faster and smarter.</p>
+        </div>
+      </div>
+
+      <div class="reveal" style="margin-top:22px;">
+        <div class="skill-group">
+          <h3>Job Targets</h3>
+          <div class="panel" style="margin-bottom:16px;">
+            <span class="tag" style="font-size:11px;">First Choice</span>
+            <h3 style="margin:10px 0 8px;">Business Development Executive</h3>
+            <p style="font-size:14px;color:var(--muted);">B2B Client Acquisition · Lead Generation · CRM Management · Client Meetings · Negotiation & Deal Closing</p>
+          </div>
+          <div class="panel" style="margin-bottom:16px;">
+            <span class="tag" style="font-size:11px;">Second Choice</span>
+            <h3 style="margin:10px 0 8px;">SaaS Sales Development Representative</h3>
+            <p style="font-size:14px;color:var(--muted);">International Client Outreach · Cold Email · Prospecting · CRM Pipeline · Sales Qualification</p>
+          </div>
+          <div class="panel">
+            <span class="tag" style="font-size:11px;">Third Choice</span>
+            <h3 style="margin:10px 0 8px;">Inside Sales / Client Success Executive</h3>
+          </div>
+          <p class="muted" style="margin-top:18px;font-size:15px;">Preferred: office-based or hybrid roles, with client visits when needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-wrap reveal">
+        <div>
+          <span class="kicker">08 — Contact</span>
+          <h2>Let's grow your business smarter.</h2>
+          <p>Open to business development roles, social media management, and freelance projects. Send a message and I'll get back to you.</p>
+        </div>
+        <div class="contact-actions">
+          <a href="mailto:info.nahidhseikh@gmail.com" class="btn btn-primary">✉ info.nahidhseikh@gmail.com</a>
+          <a href="https://nahid-digital-ai.vercel.app" target="_blank" rel="noopener" class="btn btn-ghost">🌐 Visit website</a>
+          <a href="https://wa.me/880157426267" target="_blank" rel="noopener" class="btn btn-ghost">💬 WhatsApp</a>
+          <a href="https://www.linkedin.com/search/results/all/?keywords=nahiddigitalai" target="_blank" rel="noopener" class="btn btn-ghost">in @nahiddigitalai</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="brand">
+        <div class="brand-mark"><img src="assets/logo.png" alt=""></div>
+        <div class="brand-text">Nahid<span>Digital</span>AI</div>
+      </div>
+      <span>© <span id="year"></span> NahidDigitalAI. All rights reserved.</span>
+      <span>Grow smarter with AI · Rajshahi, Bangladesh</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const root = document.documentElement;
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const current = root.getAttribute('data-theme');
+      const isDark = current === 'dark' || (!current && matchMedia('(prefers-color-scheme: dark)').matches);
+      root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    });
+
+    const navLinks = document.getElementById('navLinks');
+    document.getElementById('menuBtn').addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          e.target.querySelectorAll('.bar i').forEach(b => b.style.width = b.dataset.w + '%');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    // Count-up animation for numbers
+    function countUp(el) {
+      const to = parseFloat(el.dataset.to);
+      const pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+      const dur = 1800, start = performance.now();
+      const ease = t => 1 - Math.pow(1 - t, 3);
+      function frame(now) {
+        const t = Math.min((now - start) / dur, 1);
+        el.textContent = pre + Math.round(to * ease(t)) + suf;
+        if (t < 1) requestAnimationFrame(frame);
+      }
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      el.textContent = pre + '0' + suf;
+      requestAnimationFrame(frame);
+    }
+    const countIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { countUp(e.target); countIO.unobserve(e.target); }
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.count').forEach(el => countIO.observe(el));
+  </script>
+</body>
+</html>
